@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css"/>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <meta charset="UTF-8">
+  <title>MSBA-Airlines Flight Booking</title>
+  <style>
+    body {
+        background-color: #212130;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .container {
+        min-width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column; /* Changed to column layout */
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .confirmation-details {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .confirmation-details table {
+        background-color: #333;
+        border-radius: 10px;
+        padding: 10px;
+        width: 100%;
+        font-size: 24px;
+
+    }
+
+    .confirmation-details table td {
+        padding: 10px;
+        color: #fff;
+    }
+
+    .table-container {
+        font-size: 30px;
+        min-width: 80%;
+        margin: 0 auto;
+        color: #334;
+        background-color: #d3d3df;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: flex; /* Center the content */
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+</head>
+
+<body>
+<div class="header">
+    <h1>Booking Confirmation</h1>
+</div>
+<div class="table-container">
+    <table>
+        <tr>
+            <td>Route:</td>
+            <td>Singapore to Seoul</td>
+        </tr>
+        <tr>
+            <td>Time:</td>
+            <td>2:45 to 10:15</td>
+        </tr>
+        <tr>
+            <td>Airline:</td>
+            <td>MSBA-Airlines</td>
+        </tr>
+        <tr>
+            <td>Flight Date:</td>
+            <td>15 October 2023</td>
+        </tr>
+    </table>
+</div>
+<div class="container">
+    <div class="confirmation-details">
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td>{{ data.firstName }}</td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td>{{ data.lastName }}</td>
+            </tr>
+            <tr>
+                <td>Passport Type:</td>
+                <td>{{ data.passportType }}</td>
+            </tr>
+            <tr>
+                <td>Passport Number:</td>
+                <td>{{ data.passportNumber }}</td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td>{{ data.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <td>Frequent Flyer Number:</td>
+                <td>{{ data.frequentFlyerNumber }}</td>
+            </tr>
+            <tr>
+                <td>Ethereum Wallet Address:</td>
+                <td>{{ data.wallet }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<h1><a href="/view2">Click here to view your blockchain smart contract!</a></h1>
+
+</body>
+
+</html>

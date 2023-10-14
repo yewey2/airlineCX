@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css"/>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <meta charset="UTF-8">
+  <title>MSBA-Airlines Flight Booking</title>
+  <style>
+    body {
+        background-color: #212130;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .container {
+        min-width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: row;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .left {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .flight-details {
+        background-color: #333;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .right {
+        flex: 2;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    form {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #444;
+        color: #fff;
+    }
+
+    input[type="submit"] {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+      /* Style for the select element */
+    select {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #444;
+        color: #fff;
+    }
+
+    /* Style for the options within the select element */
+    select option {
+        background-color: #444;
+        color: #fff;
+    }
+
+    /* Style for the table container */
+    .table-container {
+        background-color: #33333D;
+        border-radius: 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+    /* Style for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse; /* Collapse borders */
+    }
+
+    table td {
+        padding: 10px;
+    }
+
+    /* Increase vertical spacing in the table */
+    table tr:not(:last-child) {
+        margin-bottom: 15px;
+    }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>MSBA-Airlines Flight Booking</h1>
+</div>
+<div class="container">
+    <div class="left">
+        <div class="table-container">
+            <table>
+                <tr>
+                    <td>Route:</td>
+                    <td>Singapore to Seoul</td>
+                </tr>
+                <tr>
+                    <td>Time:</td>
+                    <td>2:45 to 10:15</td>
+                </tr>
+                <tr>
+                    <td>Airline:</td>
+                    <td>MSBA-Airlines</td>
+                </tr>
+                <tr>
+                    <td>Flight Date:</td>
+                    <td>15 October 2023</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="right">
+        <form action="check_status" method="POST">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="passportType">Passport Type:</label>
+            <select id="passportType" name="passportType" required>
+                <option value="Singapore">Singapore</option>
+                <option value="South Korea">South Korea</option>
+            </select>
+
+            <label for="passportNumber">Passport Number:</label>
+            <input type="text" id="passportNumber" name="passportNumber" required>
+
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required>
+
+            <label for="frequentFlyerNumber">Frequent Flyer Number:</label>
+            <input type="text" id="frequentFlyerNumber" name="frequentFlyerNumber" required>
+
+            <label for="wallet">Ethereum Wallet Address:</label>
+            <input type="text" id="wallet" name="wallet" required>
+
+            <input type="submit" value="Book Flight">
+        </form>
+    </div>
+</div>
+</body>
+</html>
