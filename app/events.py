@@ -1,6 +1,7 @@
 from flask_socketio import emit
 from .extensions import socketio
 from flask import request
+from app.smart_contract import get_sample_data
 
 
 from timeit import default_timer as timer
@@ -17,4 +18,11 @@ def handle_connect():
 @socketio.on("my event")
 def handle_my_event(data=dict()):
     print('data is', data)
+
+@socketio.on("get_data")
+def handle_get_data():
+    data = get_sample_data()
+    print('data is', data)
+    emit('contract_get_data', {'data':data})
+
 

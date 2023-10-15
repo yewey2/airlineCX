@@ -19,3 +19,5 @@ Pillow==9.4.0
 # eventlet>=0.33.3
 gevent>=23.7.0
 gevent-websocket>=0.10.1
+web3>=6.11.0
+py-solc-x>=1.1.1

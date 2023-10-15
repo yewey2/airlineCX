@@ -134,9 +134,36 @@
     table tr:not(:last-child) {
         margin-bottom: 15px;
     }
+    .topbar {
+        background-color: #111119;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 2rem; /* Increase font-size to 18 */
+        min-height: 4rem; /* Set the minimum height to 3rem */
+        display: flex;
+        justify-content: center; /* Horizontally center the content */
+        align-items: center; /* Vertically center the content */
+        
+    }
+
+    .topbar a {
+        margin-top: 1rem;
+        text-decoration: underline;
+        color: #fff;
+        padding: 30px 50px;
+    }
 </style>
 </head>
+
 <body>
+    <!-- Add the topbar -->
+    <div class="topbar">
+        <a href="/">Home</a>
+        <a href="/view2">View Blockchain</a>
+    </div>
+
 <div class="header">
     <h1>MSBA-Airlines Flight Booking</h1>
 </div>
