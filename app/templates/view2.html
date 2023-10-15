@@ -20,6 +20,9 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        padding-bottom: 7rem;
+        margin-bottom: 7rem;
+        height: 100%;
     }
 
     .header {
@@ -119,26 +122,24 @@
     }
 
     /* Increase vertical spacing in the table */
-    table tr:not(:last-child) {
-        margin-bottom: 15px;
-    }
 
     .topbar {
         background-color: #111119;
-        position: fixed;
+        position: sticky;
         top: 0;
         width: 100%;
         text-align: center;
-        font-size: 2rem; /* Increase font-size to 2rem */
-        min-height: 4rem; /* Set the minimum height to 4rem */
+        font-size: 2rem; /* Increase font-size to 18 */
+        min-height: 6rem; /* Set the minimum height to 3rem */
         display: flex;
-        justify-content: space-between; /* Center the content horizontally */
-        align-items: center; /* Center the content vertically */
-        padding: 0 10px; /* Add some padding for better mobile view */
+        justify-content: center; /* Horizontally center the content */
+        align-items: center; /* Vertically center the content */
+        
     }
 
     .topbar a {
-        text-decoration: none;
+        margin-top: 1rem;
+        text-decoration: underline;
         color: #fff;
         padding: 30px 50px;
     }
@@ -146,21 +147,21 @@
 </head>
 
 <body>
-    <!-- Add the topbar -->
-    <div class="topbar">
-        <a href="/">Home</a>
-        <a href="/view2">View Blockchain</a>
+<div class="topbar">
+    <a href="/">Home</a>
+    <a href="/view2">View Blockchain</a>
+</div>
+
+    <div class="header">
+        <h1></h1>
+        <h1>Read the smart contract <a href="https://github.com/yewey2/airlineCX/blob/main/contract.sol">here!</a></h1>
     </div>
-
-
-    <h1></h1>
-    <h1>Read the smart contract <a href="https://github.com/yewey2/airlineCX/blob/main/contract.sol">here!</a></h1>
-
     <div style="min-width:80%;">
         <table style="margin: 0 auto; width:100%;">
             <tr>
                 <td colspan="2" style="text-align: center;">
-                    <button onclick="get_data()">Click me to get sample data!</button>
+                    <button onclick="get_data()">Click me to get sample data (from blockchain)!</button>
+                    <button onclick="get_data_local()">Click me to get your data!</button>
                 </td>
             </tr>
             <tr>
@@ -198,6 +199,10 @@
         console.log('getting');
         socket.emit('get_data');
     }
+    function get_data_local() {
+        console.log('getting');
+        socket.emit('get_data_local');
+    }
     socket.on('contract_get_data', function(data) {
         console.log('received');
         console.log(data.data);
@@ -208,5 +213,6 @@
         document.getElementById("duration").textContent = data.duration;
         document.getElementById("addr").textContent = data.addr;
     })
+    
 </script>
 </html>

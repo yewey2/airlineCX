@@ -20,6 +20,9 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        padding-bottom: 7rem;
+        margin-bottom: 7rem;
+        height: 100%;
     }
 
     .header {
@@ -136,12 +139,12 @@
     }
     .topbar {
         background-color: #111119;
-        position: fixed;
+        position: sticky;
         top: 0;
         width: 100%;
         text-align: center;
         font-size: 2rem; /* Increase font-size to 18 */
-        min-height: 4rem; /* Set the minimum height to 3rem */
+        height: 6rem; /* Set the minimum height to 3rem */
         display: flex;
         justify-content: center; /* Horizontally center the content */
         align-items: center; /* Vertically center the content */
@@ -195,7 +198,7 @@
         </div>
     </div>
     <div class="right">
-        <form action="check_status" method="POST">
+        <form id="myForm" action="check_status" method="POST">
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" required>
 
@@ -220,9 +223,25 @@
             <label for="wallet">Ethereum Wallet Address:</label>
             <input type="text" id="wallet" name="wallet" required>
 
-            <input type="submit" value="Book Flight">
+            <input id="submitBtn" type="submit" value="Book Flight">
         </form>
     </div>
 </div>
 </body>
+<script>
+    var socket = io();
+    document.getElementById("submitBtn").addEventListener("click", function (event) {
+        event.preventDefault();
+        data = {};
+        data.flightId = "MSBA123";
+        data.departureDateTime = "2023-10-15 14:45";
+        console.log('passpprtnum',document.getElementById("passportNumber").value);
+        data.passportNumber = document.getElementById("passportNumber").value;
+        data.duration = "7:30:00";
+        data.addr = document.getElementById("wallet").value;
+        socket.emit('add_data_local',data);
+        console.log('done');
+        document.getElementById("myForm").submit(); 
+    });
+</script>
 </html>
